@@ -5,5 +5,4 @@ seaborn
 matplotlib
 google-generativeai
 google-play-scraper
-python-dotenv
 wordcloud

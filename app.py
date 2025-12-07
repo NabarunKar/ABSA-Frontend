@@ -9,15 +9,18 @@ import matplotlib.pyplot as plt
 import google.generativeai as genai
 from google_play_scraper import reviews, Sort
 from google.api_core.exceptions import ResourceExhausted
-from dotenv import load_dotenv
 from wordcloud import WordCloud
 import numpy as np
 
 # --- LOAD SECRETS ---
-load_dotenv()
-
-ENV_GEMINI_KEY = os.getenv("GEMINI_API_KEY")
-ENV_SERPAPI_KEY = os.getenv("SERPAPI_KEY")
+# Try Streamlit secrets first (for deployed app), fallback to environment variables
+try:
+    ENV_GEMINI_KEY = st.secrets["GEMINI_API_KEY"]
+    ENV_SERPAPI_KEY = st.secrets["SERPAPI_KEY"]
+except (FileNotFoundError, KeyError):
+    # Fallback to environment variables for local development
+    ENV_GEMINI_KEY = os.getenv("GEMINI_API_KEY")
+    ENV_SERPAPI_KEY = os.getenv("SERPAPI_KEY")
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="App Sentiment Analyzer", layout="wide")
