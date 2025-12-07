@@ -1,0 +1,9 @@
+streamlit
+pandas
+requests
+seaborn
+matplotlib
+google-generativeai
+google-play-scraper
+python-dotenv
+wordcloud
